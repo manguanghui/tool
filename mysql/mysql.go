@@ -18,7 +18,7 @@ import (
 
 var db *gorm.DB
 
-type dBConf struct {
+type DBConf struct {
 	UserName  string
 	Password  string
 	IP        string
@@ -29,7 +29,7 @@ type dBConf struct {
 }
 
 // LoadMysqlDb 加载数据库驱动
-func LoadMysqlDb(conf *dBConf) {
+func LoadMysqlDb(conf *DBConf) {
 	path := strings.Join([]string{conf.UserName, ":", conf.Password, "@tcp(", conf.IP, ":", conf.Post, ")/", conf.DbName, "?charset=utf8"}, "")
 	dB, err := gorm.Open("mysql", path)
 	if err != nil {
