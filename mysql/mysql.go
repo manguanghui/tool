@@ -22,7 +22,7 @@ type DBConf struct {
 	UserName  string
 	Password  string
 	IP        string
-	Post      string
+	Port      string
 	DbName    string
 	OpenCount int
 	IdleCount int
@@ -30,7 +30,7 @@ type DBConf struct {
 
 // LoadMysqlDb 加载数据库驱动
 func LoadMysqlDb(conf *DBConf) {
-	path := strings.Join([]string{conf.UserName, ":", conf.Password, "@tcp(", conf.IP, ":", conf.Post, ")/", conf.DbName, "?charset=utf8"}, "")
+	path := strings.Join([]string{conf.UserName, ":", conf.Password, "@tcp(", conf.IP, ":", conf.Port, ")/", conf.DbName, "?charset=utf8"}, "")
 	dB, err := gorm.Open("mysql", path)
 	if err != nil {
 		log.Fatal("出现错误：", err)
